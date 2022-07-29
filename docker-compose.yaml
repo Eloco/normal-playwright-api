@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+    normal-py:
+        container_name: normal-py
+        build: .
+        ports:
+          - '8080:8080'
