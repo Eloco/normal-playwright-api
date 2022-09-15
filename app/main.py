@@ -30,7 +30,6 @@ param = {
         browser:"chromium";  # browser name,
         device:"iPhone X";   # device for webkit
         stealth:true;        # if stealth mode
-        async:true;          # if async/await mode
         }
 """
 
@@ -39,10 +38,10 @@ param = {
 def playwright():
     status_code = 200
     try:
+        global result
         if browser_name:=request.form.get('browser', default=False):
             device_name=request.form.get('device', default='')
             with sync_playwright() as playwright:
-                global result
                 if  browser_name.lower() == "chromium":
                     browser = playwright.chromium.launch(headless=True)
                     context = browser.new_context()
