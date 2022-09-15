@@ -5,7 +5,9 @@
 from wrapt_timeout_decorator import *
 from flask import Flask, request, jsonify
 from playwright.sync_api import sync_playwright
+from playwright.async_api import async_playwright
 from playwright_stealth import stealth_sync
+import asyncio
 import base64
 import os,sys
 import datetime,time,random
@@ -28,6 +30,7 @@ param = {
         browser:"chromium";  # browser name,
         device:"iPhone X";   # device for webkit
         stealth:true;        # if stealth mode
+        async:true;          # if async/await mode
         }
 """
 
@@ -36,11 +39,11 @@ param = {
 def playwright():
     status_code = 200
     try:
-        with sync_playwright() as playwright:
-            global result
-            if browser_name:=request.form.get('browser', default=False):
-                device_name=request.form.get('device', default='')
-                if   browser_name.lower() == "chromium":
+        if browser_name:=request.form.get('browser', default=False):
+            device_name=request.form.get('device', default='')
+            with sync_playwright() as playwright:
+                global result
+                if  browser_name.lower() == "chromium":
                     browser = playwright.chromium.launch(headless=True)
                     context = browser.new_context()
                 elif browser_name.lower() == "firefox":
