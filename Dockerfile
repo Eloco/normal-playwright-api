@@ -13,9 +13,11 @@ WORKDIR ${FUNCTION_DIR}
 # Copy function code and requirements
 COPY app/* ${FUNCTION_DIR}/
 
-# Install the runtime interface client
-RUN python -m pip install -r ${FUNCTION_DIR}/requirements.txt 
+RUN apt-get install -y mat \
+                       unzip
 
+# Install the runtime interface client
+RUN python -m pip install -r ${FUNCTION_DIR}/requirements.txt   --no-cache-dir
 
 ENV PORT=8080
 EXPOSE ${PORT}

@@ -15,4 +15,9 @@ PySocks==1.7.1
 timeout==0.1.2
 MarkupSafe==2.0.1
 playwright_stealth==1.0.5
-
+openpyxl
+xlsxwriter
+xlrd
+mycli
+litecli
+sh
