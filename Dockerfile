@@ -13,7 +13,8 @@ WORKDIR ${FUNCTION_DIR}
 # Copy function code and requirements
 COPY app/* ${FUNCTION_DIR}/
 
-RUN apt-get install -y mat \
+RUN apt-get update && \
+    apt-get install -y mat \
                        unzip
 
 # Install the runtime interface client
