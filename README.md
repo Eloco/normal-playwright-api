@@ -4,9 +4,9 @@ a playwright ASYNC API inside docker
 
 note: it can run on local docker or container like heroku
 ```
-sudo docker pull public.ecr.aws/w3s2d0z8/normal-playwright-api:master
-sudo docker pull ghcr.io/eloco/normal-playwright-api:latest
-sudo docker run --rm=True -p 8080:8080 ghcr.io/eloco/local-lambda-playwright
+sudo docker pull                       public.ecr.aws/w3s2d0z8/normal-playwright-api:master
+sudo docker pull                       ghcr.io/eloco/normal-playwright-api:latest
+sudo docker run --rm=True -p 8080:8080 ghcr.io/eloco/normal-playwright-api:latest
 ```
 ```
 bs64=`echo "await page.goto('http://whatsmyuseragent.org/',wait_until='commit'); result=await page.content()" | base64 -w 0`
