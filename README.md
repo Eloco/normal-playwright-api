@@ -28,3 +28,16 @@ param = {
         reindent : true                        ; # if reindent run code
         }
 ```
+
+BTW: if u need to set proxy, marksure add the code into your post['run']:
+>https://playwright.dev/python/docs/network
+
+>You can configure pages to load over the HTTP(S) proxy or SOCKSv5. Proxy can be either set globally for the entire browser, or for each browser context individually.
+You can optionally specify username and password for HTTP(S) proxy, you can also specify hosts to bypass proxy for.
+```
+browser = await chromium.launch(proxy={
+  "server": "http://myproxy.com:3128",
+  "username": "usr",
+  "password": "pwd"
+})
+```
