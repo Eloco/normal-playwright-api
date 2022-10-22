@@ -1,5 +1,6 @@
 sh==1.*
-lxml==4.8.0
+lxml==4.9.1
+html2text==2020.1.16
 html5lib==1.1
 pandas==1.4.2
 PySocks==1.7.1

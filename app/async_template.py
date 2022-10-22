@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 # coding=utf-8
-from playwright_stealth import stealth_async
-import asyncio
-import sh
 import datetime,time,random
 import requests
 import base64
@@ -11,9 +8,12 @@ import tempfile
 import traceback
 import random
 import copy
+import sh
 import re
 
 from playwright.async_api import async_playwright
+from playwright_stealth import stealth_async
+import asyncio
 
 async def main(browser_name,if_stealth,device_name):
     async with async_playwright() as playwright:
@@ -44,4 +44,5 @@ async def main(browser_name,if_stealth,device_name):
                 print("page is stealth!")
                 stealth_async(page)
         <run_code>
+
         return(result)

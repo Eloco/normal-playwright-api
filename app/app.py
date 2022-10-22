@@ -9,6 +9,8 @@ import base64
 import os,sys,json
 import traceback
 import tempfile
+from pprint import pprint
+import importlib.machinery
 import copy
 
 app = Flask(__name__)
@@ -34,16 +36,16 @@ param = {
 async def playwright():
     try:
         status_code = 200
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        template_file="async_template.py"
         result="Hello Flask POST!"
 
         if_stealth   = bool(request.form.get('stealth'  , default  = False))
         if_reindent  = bool(request.form.get('reindent' , default  = True))
         browser_name = str(request.form.get('browser'   , default  = 'webkit')).strip().lower()
         device_name  = str(request.form.get('device'    , default  = '')).strip().lower()
-
         run_code     = str(request.form.get('run', default =f'result="{result}"')).strip()
 
-        template_file="async_template.py"
 
         try:
             run_code=base64.b64decode(run_code).decode('utf-8')
@@ -51,21 +53,24 @@ async def playwright():
         run_code     = run_code.replace('\r','\n').replace('\n','\n'+" "*4*2)
 
         with tempfile.TemporaryDirectory() as tmpdirname:
-            #print('created temporary directory', tmpdirname)
-            os.chdir(sys.path[0])
-            template=open(template_file).read()
+            template=open(os.path.join(script_dir,template_file)).read()
             template=template.replace('<run_code>',run_code)
-            sys.path = list(filter(lambda x:os.path.exists(x) and \
-                    "/var/folders/" not in x[:13],sys.path)) ##clean sys.path
-            sys.path.insert(1, tmpdirname)
-            file_path=os.path.join(tmpdirname,"template.py")
-            with open(file_path,"w") as f:f.write(template)
-            if if_reindent:os.system(f"reindent {file_path} &> /dev/null;autopep8 {file_path} --select=E121,E101,E11 --in-place &> /dev/null;cat {file_path}")
-            import template
-            result=await template.main(browser_name=browser_name,if_stealth=if_stealth,device_name=device_name)
 
+            dynamic_path=os.path.join(tmpdirname,"dynamic.py")
+            with open(dynamic_path,"w") as f:
+                f.write(template)
+                del template
+
+            if if_reindent:os.system(f"python -m reindent {dynamic_path} &> /dev/null; \
+                        python -m autopep8 {dynamic_path} --select=E121,E101,E11 --in-place &> /dev/null; \
+                        cat {dynamic_path}")
+
+            loader = importlib.machinery.SourceFileLoader('dynamic', dynamic_path)
+            handle = loader.load_module('dynamic')
+            result = await handle.main(browser_name=browser_name,\
+                                if_stealth=if_stealth,\
+                                device_name=device_name))
     except Exception as e:
-        #result=str(e)
         result=traceback.format_exc()
         traceback.print_exc()
         status_code = 500
