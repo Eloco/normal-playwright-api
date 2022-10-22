@@ -69,7 +69,7 @@ async def playwright():
             handle = loader.load_module('dynamic')
             result = await handle.main(browser_name=browser_name,\
                                 if_stealth=if_stealth,\
-                                device_name=device_name))
+                                device_name=device_name)
     except Exception as e:
         result=traceback.format_exc()
         traceback.print_exc()
