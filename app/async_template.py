@@ -10,6 +10,7 @@ import os,sys,json
 import tempfile
 import traceback
 import random
+import copy
 import re
 
 from playwright.async_api import async_playwright

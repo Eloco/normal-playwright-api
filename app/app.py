@@ -9,6 +9,7 @@ import base64
 import os,sys,json
 import traceback
 import tempfile
+import copy
 
 app = Flask(__name__)
 
@@ -40,7 +41,7 @@ async def playwright():
         browser_name = str(request.form.get('browser'   , default  = 'webkit')).strip().lower()
         device_name  = str(request.form.get('device'    , default  = '')).strip().lower()
 
-        run_code     = str(request.form.get('run', default =f'{result}')).strip()
+        run_code     = str(request.form.get('run', default =f'result="{result}"')).strip()
 
         template_file="async_template.py"
 
