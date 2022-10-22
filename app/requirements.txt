@@ -19,4 +19,5 @@ Flask
 flask[async]
 mycli
 litecli
+reindent
 autopep8
