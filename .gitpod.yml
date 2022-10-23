@@ -12,8 +12,8 @@ tasks:
 
   - name: Remote Pull Docker
     init: |
-      sudo docker pull          public.ecr.aws/w3s2d0z8/`basename $(pwd)`:main
-      docker tag                public.ecr.aws/w3s2d0z8/`basename $(pwd)`:main    remote_docker:latest
+      sudo docker pull          public.ecr.aws/w3s2d0z8/`basename $(pwd)`:master
+      docker tag                public.ecr.aws/w3s2d0z8/`basename $(pwd)`:master    remote_docker:latest
       sudo docker run -d --name remote_docker -p 9000:8080 remote_docker:latest
     command: |
       sudo docker restart remote_docker &> /dev/null
