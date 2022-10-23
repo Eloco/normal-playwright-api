@@ -15,6 +15,8 @@ note: it can run on local docker or container like heroku
 
 ## pull or build
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Eloco/normal-playwright-api)
+
 ```
 podman pull                       public.ecr.aws/w3s2d0z8/normal-playwright-api:master
 podman pull                       ghcr.io/eloco/normal-playwright-api:latest
