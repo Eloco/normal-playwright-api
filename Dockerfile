@@ -13,6 +13,9 @@ WORKDIR ${FUNCTION_DIR}
 
 RUN apt-get update && \
     apt-get install -y mat \
+                       jq \
+                       httpie \
+                       tesseract-ocr tesseract-ocr-chi-sim \
                        unzip
 
 # Copy requirements

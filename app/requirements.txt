@@ -22,3 +22,4 @@ mycli
 litecli
 reindent
 autopep8
+regex
