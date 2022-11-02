@@ -28,7 +28,7 @@ pdoman run --rm=True -p 8080:8080 ghcr.io/eloco/normal-playwright-api:latest
 ```
 param = {
         run      : "result='hello Flask POST'" ; # base64 or normal run code
-        browser  : "webkit"                    ; # browser name
+        browser  : "webkit"                    ; # browser name (webkit or firefox or chromium)
         device   : "iPhone X"                  ; # device for webkit
         stealth  : false                       ; # if stealth mode
         reindent : true                        ; # if reindent run code
