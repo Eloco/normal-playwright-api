@@ -24,3 +24,7 @@ reindent
 autopep8
 regex
 requests-async==0.6.2
+httpx
+httpx[http2]
+httpx[socks]
+httpx[cli]
