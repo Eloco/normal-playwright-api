@@ -23,4 +23,4 @@ litecli
 reindent
 autopep8
 regex
-requests-async
+requests-async==0.6.2
