@@ -23,10 +23,8 @@ litecli
 reindent
 autopep8
 regex
-
 httpx
 httpx[http2]
 httpx[socks]
 httpx[cli]
-
-shellous==0.20.0
+shellous
