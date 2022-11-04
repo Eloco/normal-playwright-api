@@ -29,5 +29,5 @@ httpx[http2]
 httpx[socks]
 httpx[cli]
 shellous==0.20.0
-mitmproxy==9.0.1
+mitmproxy
 playwright==1.27.1
