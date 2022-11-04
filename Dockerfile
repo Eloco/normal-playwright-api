@@ -35,6 +35,8 @@ RUN cat ${FUNCTION_DIR}/requirements.txt | while read PACKAGE; do python -m pip 
 RUN python -m playwright install-deps && \
         python -m playwright install
 
+WORKDIR ${FUNCTION_DIR}
+
 # Copy function code
 COPY app/* ${FUNCTION_DIR}/
 
