@@ -9,8 +9,6 @@ ARG FUNCTION_DIR
 
 # Create function directory
 RUN mkdir -p ${FUNCTION_DIR}
-# Set working directory to function root directory
-WORKDIR ${FUNCTION_DIR}
 
 
 RUN apt-get update && \
@@ -30,8 +28,8 @@ RUN ln -s `which python3` /usr/bin/python
 # Copy requirements
 COPY app/requirements.txt ${FUNCTION_DIR}/
 
-# Install the runtime interface client
-RUN python -m pip install -r ${FUNCTION_DIR}/requirements.txt   --no-cache-dir
+# Install 
+RUN cat ${FUNCTION_DIR}/requirements.txt | while read PACKAGE; do python -m pip install "$PACKAGE"  --no-cache-dir ; done; exit 0
 
 # install playwright deps
 RUN python -m playwright install-deps && \
