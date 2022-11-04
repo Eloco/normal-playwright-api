@@ -9,7 +9,8 @@ on:
       - 'releases/**'
     paths-ignore:
       - '**/**.md'
-      - '**/.*'
+      - '.*/**'
+      - '.*'
 
 jobs:
   build-and-push:
