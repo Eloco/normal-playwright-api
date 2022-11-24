@@ -13,6 +13,8 @@ RUN mkdir -p ${FUNCTION_DIR}
 
 RUN apt-get update && \
     apt-get install -y mat \
+                       curl \
+                       wget \
                        jq \
                        httpie \
                        xvfb \
