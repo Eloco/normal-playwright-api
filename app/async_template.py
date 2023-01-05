@@ -19,10 +19,10 @@ async def main(browser_name,if_stealth,device_name):
         if bool(browser_name):
             if browser_name=="chromium":
                 browser = await playwright.chromium.launch(headless=True)
-                context = await browser.new_context()
+                context = await browser.new_context(ignore_https_errors=True)
             elif browser_name=="firefox":
                 browser = await playwright.firefox.launch(headless=True)
-                context = await browser.new_context()
+                context = await browser.new_context(ignore_https_errors=True)
             else:
                 browser = await playwright.webkit.launch(headless=True)
                 if device_name == "random":
@@ -36,7 +36,7 @@ async def main(browser_name,if_stealth,device_name):
                         device_name = "Desktop Firefox"  # use default
                 print(f"webkit using [{device_name}]")
                 device      = playwright.devices[device_name]
-                context     = await browser.new_context(**device,)
+                context     = await browser.new_context(**device,ignore_https_errors=True)
             await context.clear_cookies()
             page = await context.new_page()
             if if_stealth:
