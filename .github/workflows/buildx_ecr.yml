@@ -2,6 +2,7 @@ name: Build and publish to public ECR
 
 # Controls when the action will run. 
 on:
+  workflow_dispatch:
   push:
     branches:    
       - main
