@@ -31,3 +31,4 @@ httpx[cli]
 flask[async]
 mitmproxy
 requests
+xlwt
