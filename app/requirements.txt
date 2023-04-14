@@ -32,3 +32,4 @@ flask[async]
 mitmproxy
 requests
 xlwt
+xlrd
