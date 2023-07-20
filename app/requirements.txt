@@ -33,3 +33,4 @@ mitmproxy
 requests
 xlwt
 xlrd
+python-docx
