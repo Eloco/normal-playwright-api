@@ -17,7 +17,7 @@ RUN apt-get update && \
                        wget \
                        jq \
                        httpie \
-                       xvfb \og
+                       xvfb \
                        tesseract-ocr tesseract-ocr-chi-sim \
                        unzip \
                        software-properties-common
