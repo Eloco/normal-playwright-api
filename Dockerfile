@@ -45,4 +45,4 @@ COPY app/* ${FUNCTION_DIR}/
 ENV PORT=8080
 EXPOSE ${PORT}
 
-CMD ["python", "-m", "gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "app:app", "--log-level", "debug", "--enable-stdio-inheritance"  "--timeout" "90" ]
+CMD [ "python", "-m", "gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "app:app", "--log-level", "debug", "--enable-stdio-inheritance"  "--timeout" "120" ]
