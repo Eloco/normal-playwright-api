@@ -34,3 +34,4 @@ requests
 xlwt
 xlrd
 python-docx
+pyvirtualdisplay
