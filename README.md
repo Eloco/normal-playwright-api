@@ -4,9 +4,7 @@ a playwright ASYNC API inside docker
 
 ## INTRO
 
-build on
-- https://gallery.ecr.aws/w3s2d0z8/normal-playwright-api
-- https://github.com/Eloco/normal-playwright-api/pkgs/container/normal-playwright-api
+
 
 link to:
 - https://github.com/Eloco/aws-lambda-playwright
@@ -18,9 +16,8 @@ note: it can run on local docker or container like heroku
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Eloco/normal-playwright-api)
 
 ```
-podman pull                       public.ecr.aws/w3s2d0z8/normal-playwright-api:master
-podman pull                       ghcr.io/eloco/normal-playwright-api:latest
-pdoman run --rm=True -p 8080:8080 ghcr.io/eloco/normal-playwright-api:latest
+docker pull                       ghcr.io/eloco/normal-playwright-api:latest
+docker run --rm=True -p 8080:8080 ghcr.io/eloco/normal-playwright-api:latest
 ```
 
 ## Usage
