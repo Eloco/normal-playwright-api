@@ -35,3 +35,4 @@ xlwt
 xlrd
 python-docx
 pyvirtualdisplay
+odfpy==1.4.1
